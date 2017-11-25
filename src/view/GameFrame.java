@@ -39,7 +39,7 @@ public class GameFrame extends JFrame {
 	private int maxScore;
 	
 	public GameFrame() {
-		this.setTitle("2048¡ª¡ª½´ÓÍ");
+		this.setTitle("2048â€”â€”Cwift");
 		this.setBounds(100, 100, Const.frameW, Const.frameH);
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		for (KeyListener lis : this.getKeyListeners()) {
@@ -79,16 +79,16 @@ public class GameFrame extends JFrame {
 		toolPabel = new JPanel();
 		toolPabel.setSize(Const.frameW, Const.toolH);
 		this.getContentPane().add(toolPabel, BorderLayout.NORTH);
-		scoreLabel = new ScoreLabel("µ±Ç°µÃ·Ö: ");
+		scoreLabel = new ScoreLabel("å½“å‰å¾—åˆ†: ");
 		toolPabel.add(scoreLabel);
-		maxScoreLabel = new ScoreLabel("×î¸ßµÃ·Ö: ");
+		maxScoreLabel = new ScoreLabel("æœ€é«˜å¾—åˆ†: ");
 		toolPabel.add(maxScoreLabel);
-		restartButton = new JButton("¿ªÊ¼ÓÎÏ·");
+		restartButton = new JButton("å¼€å§‹æ¸¸æˆ");
 		restartButton.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				restartButton.setText("ÖØĞÂ¿ªÊ¼");
+				restartButton.setText("é‡æ–°å¼€å§‹");
 				restart();
 			}
 		});
@@ -120,7 +120,7 @@ public class GameFrame extends JFrame {
 		table.setRowHeight(Const.cellH);
 		table.setRowSelectionAllowed(false);
 		table.setColumnSelectionAllowed(false);
-		table.setFont(new Font("Î¢ÈíÑÅºÚ", Font.BOLD, 40));
+		table.setFont(new Font("å¾®è½¯é›…é»‘", Font.BOLD, 40));
 		DefaultTableCellRenderer tcr = new DefaultTableCellRenderer();
 		tcr.setHorizontalAlignment(JLabel.CENTER);
 		table.setDefaultRenderer(Object.class, tcr);
@@ -146,13 +146,18 @@ public class GameFrame extends JFrame {
 	private void addCell() {
 		int n = model.getEmptyCellCount();
 		int location = (int)(Math.random() * n) + 1;
-		Cell cell = new Cell(2);
+		Cell cell;
 		int count = 0;
 		for (int i = 0; i < 4; i++) {
 			for (int j = 0; j < 4; j++) {
 				if (model.getValueAt(i, j).equals("")) {
 					count++;
 					if (count == location) {
+						if(n >= 8 && Math.random() <= 0.25) {
+							cell = new Cell(4);
+						}else {
+							cell = new Cell(2);
+						}
 						model.setValueAt(cell, i, j);
 						break;
 					}
@@ -162,9 +167,8 @@ public class GameFrame extends JFrame {
 		n--;
 		if (n == 0) {
 			if (isEnd()) {
-				JOptionPane.showMessageDialog(null, "ÓÎÏ·½áÊøÁË");
+				JOptionPane.showMessageDialog(null, "æ¸¸æˆç»“æŸäº†");
 			}
-			return;
 		}
 		isMoved = false;
 		table.revalidate();

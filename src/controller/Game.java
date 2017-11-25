@@ -4,7 +4,7 @@ import view.GameFrame;
 /**
  * 
  * @author Cwift
- * Ä¿Ç°´æÔÚµÄbug£ºµ±Ãæ°åÂúµÄÊ±ºò£¬ÓĞÊ±ºò»áË¢ĞÂ²»³öÀ´£¬ĞèÒªÓÃÊó±êµãÒ»ÏÂtableµÄcell²Å¿ÉÒÔ.
+ * ç›®å‰å­˜åœ¨çš„bug: æ¸¸æˆåˆšå¼€å§‹æ—¶tableä¸æ˜¾ç¤º
  */
 public class Game {
 
